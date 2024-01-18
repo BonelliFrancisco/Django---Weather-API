@@ -1,0 +1,35 @@
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.material-card {
+    display: flex;
+    align-items: center;
+}
+
+.card-content {
+    flex-grow: 1;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.temperature {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 14px;
+}
+
+.updated_date {
+    font-size: 12px;
+    color: #888;
+}

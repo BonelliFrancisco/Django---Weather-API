@@ -1,0 +1,194 @@
+body{
+    background-color: rgba(255, 255, 255, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img{
+    max-width: 300px;
+    max-height: 200px;
+}
+.item{
+    border: 2px; 
+    border-style: dotted;
+    border-color: rgb(193, 193, 254); 
+    margin: 10px;
+    padding: 10px;
+}
+p{
+    margin: 10px;
+    padding: 10px;
+}
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.bg-primary {
+    background-color: #007bff;
+  }
+.bg-secondary {
+    background-color: #6c757d;
+  }
+.bg-success {
+    background-color: #28a745;
+  }
+.bg-danger {
+    background-color: #dc3545;
+  }
+.bg-warning {
+    background-color: #ffc107;
+  }
+.bg-info {
+    background-color: #17a2b8;
+  }
+.bg-light {
+    background-color: #f8f9fa;
+  }
+.bg-dark {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .mat-button {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 16px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    min-height: 44px;
+    min-width: 120px;
+  }
+  
+  /* Button states */
+  .mat-button:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  .mat-button:active {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  
+  .mat-button:focus {
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.12);
+  }
+  
+  .mat-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  /* Primary button */
+  .mat-primary-button {
+    color: #ffffff;
+    background-color: #3f51b5;
+  }
+  
+  .mat-primary-button:hover {
+    background-color: #283593;
+  }
+  
+  .mat-primary-button:active {
+    background-color: #1a237e;
+  }
+  
+  .mat-primary-button:focus {
+    box-shadow: 0 0 0 4px #5c6bc0;
+  }
+  
+  .mat-primary-button:disabled {
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #3f51b5;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .material-card {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 16px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .material-card .icon {
+    font-size: 32px;
+    color: #888;
+  }
+  
+  .material-card .temperature {
+    font-size: 18px;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  .material-card .city {
+    font-size: 18px;
+    color: #777;
+  }
+
+  .material-card .description {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  .material-card .updated_date {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  @media (max-width: 600px) {
+    .card-container {
+      justify-content: center;
+    }
+  
+    .material-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+.textbox{
+  min-width: 400px; 
+  min-height: 40px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+select{
+  min-width: 120px; 
+  min-height: 40px;
+  background-color: #00e936af;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  margin-top: 10px;
+}
+

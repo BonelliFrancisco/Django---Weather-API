@@ -1,0 +1,141 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block base_body %}
+
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+<div class="container">
+    <div class="row">
+        <form>
+            <input type="text" id="cityInput" class="textbox" placeholder="Check your city's weather. Ex; London">
+            <button class="mat-button mat-primary-button" type="button" id="checkWeatherButton">
+                Check Weather
+            </button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="card-container" id="weather-container">
+            <!-- api response will create elements inside here -->
+        </div>
+    </div>
+    <div class="row bg-dark" style="padding: 10px;">
+        <ul>
+            <li>
+                <h3>How to use it ?</h3>
+            </li>
+            <li>1. When you refresh the page, the data comes from Django API</li>
+            <li>
+                2. When you enter your city name and then click the button it fetches the data from external API 
+                <br>and then checks it exists in our database or not. If not exists django creates a new record
+                <br>with api response. If exists, django updates existing record.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+{% block script %}
+<script>
+    const cityInput = document.getElementById('cityInput');
+    const checkWeatherButton = document.getElementById('checkWeatherButton');
+    const weatherContainer = document.getElementById('weather-container');
+
+    checkWeatherButton.addEventListener('click', () => {
+        const city = cityInput.value;
+        const queryParams = { city };
+
+        trigger(queryParams);
+    });
+
+    function trigger(queryParams = {}) {
+        const urlSearchParams = new URLSearchParams(queryParams);
+        const queryString = urlSearchParams.toString();
+
+        fetch(`/api/trigger/?${queryString}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    console.log("Triggered API Response", data);
+                    createElements(data["data"], weatherContainer);
+                }
+            })
+            .catch(error => {
+                console.error('Error triggering', error);
+            });
+    }
+
+    function fetchDataFromApi() {
+    fetch(`/api/data/`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`API request failed with status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("API response for all records:", data);
+            createElements(data, weatherContainer);
+        })
+        .catch(error => {
+            console.error('Error fetching API data:', error);
+        });
+}
+
+
+
+
+
+    function createElements(data, weatherContainer) {
+    weatherContainer.innerHTML = '';
+
+    if (data !== null && Array.isArray(data)) {
+        data.forEach(weather => {
+            const cardContainer = document.createElement('div');
+            cardContainer.classList.add('card-container');
+
+            const materialCard = document.createElement('div');
+            materialCard.classList.add('material-card');
+
+            const weatherIcon = document.createElement('img');
+            weatherIcon.src = weather.icon;
+            weatherIcon.alt = 'Weather Icon';
+            weatherIcon.classList.add('weather-icon');
+
+            const cityName = document.createElement('div');
+            cityName.classList.add('city-name');
+            cityName.textContent = weather.city;
+
+            const temperature = document.createElement('div');
+            temperature.classList.add('temperature');
+            temperature.textContent = `${weather.temperature}°C`;
+
+            const description = document.createElement('div');
+            description.classList.add('description');
+            description.textContent = weather.description;
+
+            const updatedDate = document.createElement('small');
+            updatedDate.classList.add('updated-date');
+            updatedDate.textContent = weather.updated_date;
+
+            materialCard.appendChild(weatherIcon);
+            materialCard.appendChild(cityName);
+            materialCard.appendChild(temperature);
+            materialCard.appendChild(description);
+            materialCard.appendChild(updatedDate);
+
+            cardContainer.appendChild(materialCard);
+            weatherContainer.appendChild(cardContainer);
+        });
+    } else {
+        console.error('Invalid API response:', data);
+    }
+    }
+
+
+    fetchDataFromApi();
+</script>
+{% endblock %}
+
+{% endblock %}
+
+

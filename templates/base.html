@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Base app</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        {%block base_header%}
+        <h1> this is header</h1>
+        {%endblock base_header%}
+        
+        {%block base_body%}
+        
+        {%endblock base_body%}
+    
+        {%block base_footer%}
+        <h1>this is footer</h1>
+        {%endblock base_footer%}
+    
+       
+    </body>
+</html>
