@@ -46,9 +46,7 @@ def query_weather_data(city=None):
     if city:
         querryset = querryset.filter(city__iexact=city)
 
-    print(
-        "querryset:", querryset
-    )  # Agrega esta línea para imprimir el contenido de querryset
+    print("querryset:", querryset)
 
     return [
         {
@@ -68,7 +66,7 @@ def query_weather_data(city=None):
 def api_data_view(request):
     try:
         qs = query_weather_data()
-        print("qs:", qs)  # Agrega esta línea para imprimir el contenido de qs
+        print("qs:", qs)
         return JsonResponse(qs, safe=False)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
